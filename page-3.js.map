@@ -1,1 +1,1 @@
-{"version":3,"file":"page-3.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"page-3.js","sources":["../src/js/page03.js"],"sourcesContent":["console.log('page 03');"],"names":[],"mappings":"oCAAA,QAAQ,IAAI,SAAS"}
