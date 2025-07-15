@@ -30,9 +30,6 @@ function getImagesByQuery(query){
     animationSpeed: 250,    
     scaleImageToRatio: true,
     })
-
-
-
  })
 	.catch(error => console.log(error));
 }
@@ -44,16 +41,13 @@ function createGallery(arr){
     markUp = arr.map(itm=>{
         return `
         <li class="gallery_item">
-        
             <a href="${itm.largeImageURL}">
                 <img src="${itm.previewURL}" title="" />
-
             </a>
-           
         </li>
         `
     }).join();
-    return gal.insertAdjacentHTML('beforeend', markUp);
+    gal.insertAdjacentHTML('beforeend', markUp);
 
   
 }  
