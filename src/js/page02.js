@@ -5,7 +5,8 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import axios from 'axios';
 const gal = document.querySelector('.gallery');
 // console.log(gal);
-const BASE_URL = 'https://pixabay.com/api';
+
+const BASE_URL = 'https://pixabay.com/api/';
 const myApiKey = '51186890-e1c8ef6e5ef4b08950db17a2f';
 
 async function getImagesByQuery(query){
