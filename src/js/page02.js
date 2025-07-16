@@ -6,7 +6,8 @@ import axios from 'axios';
 const gal = document.querySelector('.gallery');
 // console.log(gal);
 
-const BASE_URL = 'https://pixabay.com/api/';
+// const BASE_URL = 'https://pixabay.com/api';
+   const BASE_URL = 'https://pixabay.com/api/';
 const myApiKey = '51186890-e1c8ef6e5ef4b08950db17a2f';
 
 async function getImagesByQuery(query){
@@ -29,13 +30,13 @@ async function getImagesByQuery(query){
     console.log(findArray.data.hits);
     createGallery(findArray.data.hits);
 
-    //     const lightbox = new SimpleLightbox('.gallery_item a', {
+        const lightbox = new SimpleLightbox('.gallery_item a', {
     
-    // captionsData: 'alt',    
-    // captionDelay: 200,      
-    // animationSpeed: 250,    
-    // scaleImageToRatio: true,
-    // })
+    captionsData: 'alt',    
+    captionDelay: 200,      
+    animationSpeed: 250,    
+    scaleImageToRatio: true,
+    })
  }
     catch(error){
 
