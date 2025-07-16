@@ -5,11 +5,11 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import axios from 'axios';
 const gal = document.querySelector('.gallery');
 // console.log(gal);
-
+const BASE_URL = 'https://pixabay.com/api';
 const myApiKey = '51186890-e1c8ef6e5ef4b08950db17a2f';
 
-function getImagesByQuery(query){
-    axios.get('https://pixabay.com/api', {
+async function getImagesByQuery(query){
+    const options = {
   
     params: {
         key: myApiKey,
@@ -18,20 +18,27 @@ function getImagesByQuery(query){
         orientation: 'horizontal',
         safesearch: true,
         }
- }).then(response =>{
-    console.log(response.data.hits);
-    
-    createGallery(response.data.hits);
+ }
 
-        const lightbox = new SimpleLightbox('.gallery_item a', {
+ try {
+   
+    const findArray = await axios.get(BASE_URL, options);
+
     
-    captionsData: 'alt',    
-    captionDelay: 200,      
-    animationSpeed: 250,    
-    scaleImageToRatio: true,
-    })
- })
-	.catch(error => console.log(error));
+    console.log(findArray.data.hits);
+    createGallery(findArray.data.hits);
+
+    //     const lightbox = new SimpleLightbox('.gallery_item a', {
+    
+    // captionsData: 'alt',    
+    // captionDelay: 200,      
+    // animationSpeed: 250,    
+    // scaleImageToRatio: true,
+    // })
+ }
+    catch(error){
+
+    }
 }
 
 getImagesByQuery('cat');
