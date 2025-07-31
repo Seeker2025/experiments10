@@ -1,1 +1,1 @@
-{"version":3,"file":"page-5.js","sources":["../src/js/page05.js"],"sourcesContent":["console.log('page 05');\n"],"names":[],"mappings":"oCAAA,QAAQ,IAAI,SAAS"}
+{"version":3,"file":"page-5.js","sources":["../src/js/page05.js"],"sourcesContent":["console.log('page 05');\n\nfetch('http://localhost:3000/books')\n    .then(res=>{\n       console.log(res.json())\n    })\n    \n\n\n\n\n\n\n\n\n\n\n\n    "],"names":["res"],"mappings":"oCAAA,QAAQ,IAAI,SAAS,EAErB,MAAM,6BAA6B,EAC9B,KAAKA,GAAK,CACR,QAAQ,IAAIA,EAAI,KAAI,CAAE,CAC7B,CAAK"}
