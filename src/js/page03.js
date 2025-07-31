@@ -1,11 +1,12 @@
 console.log('page 03');
 ////// Loader in HTML
+////// try... catch
 
 function getFruit(name){
     const fruits = {
-        strawberry: 'berry01',
-        kiwi: 'berry02', 
-        apple: 'berry03',
+        strawBerry: 'strawBerry01',
+        kiwiBerry: 'kiwiBerry02', 
+        appleBerry: 'appleBerry03',
     }
     return new Promise((resolve, reject) => 
         setTimeout(() => {
@@ -16,12 +17,15 @@ function getFruit(name){
     );
 }
 
-try{
-    const apple = getFruit('apple');
-    console.log(apple);
-}catch(error){
-    console.log('mis');
-}
+async function aMakeSmoothie(){
+        try{
+            const apple = await getFruit('kiwiBerry');
+            console.log(apple);
+        }catch(error){
+            console.log('mis');
+        }
+}      
+aMakeSmoothie(); 
 
 // console.log(getFruit('apple'));
 
