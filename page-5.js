@@ -1,2 +1,2 @@
-import"./assets/styles-BZUKjEjr.js";console.log("page 05");fetch("http://localhost:3000/books").then(o=>{console.log(o.json())});
+import"./assets/styles-BZUKjEjr.js";console.log("page 05");fetch("https://jsonplaceholder.typicode.com/posts/2").then(o=>o.json()).then(o=>console.log(o));const t={method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify({title:"Hello from JS",body:"qweryuiqWAERTY",userId:12})};fetch("https://jsonplaceholder.typicode.com/posts",t).then(o=>{if(!o.ok)throw new Error(o.statusText);return o.json()}).then(o=>console.log(o)).catch(o=>console.log(o));
 //# sourceMappingURL=page-5.js.map
