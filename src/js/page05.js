@@ -1,4 +1,5 @@
 console.log('page 05');
+//////FSOn 77 Модуль 11 Урок 1 Артем Рисіч 24.04.2023
 
 // fetch('http://localhost:3000/books')
 //     .then(res=>{
@@ -49,7 +50,7 @@ addPost.addEventListener('click', handlerAddPost)
 
 function handlerAddPost(){
     formWrapper.innerHTML = `
-        <form action="submit" class="js-form-add">
+        <form action="submit" class="js-form-add form-add">
           <input type="text" name="title">
           <textarea name="body" cols="30" rows="10"></textarea>
           <button>Додати пост</button>
@@ -78,20 +79,43 @@ function handlerFormSubmit(evt){
       listPosts.insertAdjacentHTML('beforeend', createPostMarkup(obj));
   }).catch(()=>{
     errMessage.innerHTML = 'Не можливо додати пост';
-  }).finally(()=>(formWrapper.innerHTML = ""));
+  }).finally(()=>{
+    formWrapper.innerHTML = "";
+    setTimeout(()=>{
+      errMessage.innerHTML = "";
+    }, 2000);
+  });
 }
 
 function createPostMarkup({id, title, body}){
   return `
-            <li data-id="${id}">
+            <li data-id=${id} class="li_box">
                 <h2>${title}</h2>
                 <p>${body}</p>
             </li> `;
 }
 
+////// "PUT"
 
+// const options02 = {
+//   method: "PUT",
+//   body: JSON.stringify({
+//     id: 1,
+//     title: "cat",
+//   }),
+//   headers: {
+//     "Content-type": "application/json",
+//   },
+// }
+// fetch('https://jsonplaceholder.typicode.com/posts/1', options02)
+//   .then(resp => console.log(resp))
 
-
+////// "DELETE"
+// const options03 = {
+//   method: "DELETE"
+// }
+// fetch('https://jsonplaceholder.typicode.com/posts/1', options03)
+//   .then(resp => console.log(resp))
 
 
 

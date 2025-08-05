@@ -3,7 +3,10 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 main{
+    padding: 15px 0 0 20px;
+    display: flex;
     flex-grow: 0;
+    flex-direction: column;
 }
 
 ul.gallery{
