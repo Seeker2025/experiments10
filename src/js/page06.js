@@ -21,12 +21,22 @@ searchForm.addEventListener('submit', handlerForm);
 
 function handlerForm(evt){
     evt.preventDefault();
-    console.log(evt.currentTarget);
+    // console.log(evt.currentTarget);
     const data = new FormData(evt.currentTarget);
-    console.log(data.getAll('country'));
+    // console.log(data.getAll('country'));
     const arr = data.getAll('country').filter(item => item).map(item => item.trim());
-     console.log(arr);
-     getCountries(arr);
+    //  console.log(arr);
+     getCountries(arr).then(async resp => {
+        // console.log(resp);
+        const capitals = resp.map(({capital}) => capital[0]);
+        console.log(capitals);
+        const weatherService = await getWeather(capitals);
+        
+        list.innerHTML = createMarkup(weatherService);
+
+        console.log(weatherService);
+     })
+     .catch(e => console.log(e));
 }
 async function getCountries(arr){
     const resp = arr.map(async item => {
@@ -43,6 +53,42 @@ async function getCountries(arr){
     return countryObj;
 }
 
-async function getWeather(){
-    const BASE_URL = 'http://api.weatherapi.com/v1';
+async function getWeather(arr){
+
+    const BASE_URL = 'https://api.weatherapi.com/v1';
+    const API_KEY = '65fc8710104c48e595e140016252406';
+    
+    const resps = arr.map(async city=>{
+        const params = new URLSearchParams({
+        key: API_KEY,
+        q: city,
+        lang: 'uk',
+    });
+
+    const resp = await fetch(`${BASE_URL}/current.json?${params}`);
+
+    if(!resp.ok){
+        throw new Error(resp.statusText);
+    }
+        return resp.json();
+    })
+    
+    const data = await Promise.allSettled(resps);
+    const objs = data.filter(({status})=> status === 'fulfilled').map(({value})=> value.current);
+    // console.log(objs);
+    return objs;
+}
+
+function createMarkup(arr){
+return arr.map(() => `
+          <li>
+              <div>
+                  <h2>{country}</h2>
+                  <h3>{name}</h3>
+              </div>
+              <img src="{icon}" alt="{text}">
+                <p>{text}</p>
+                <p>{text}</p>
+          </li>
+    `).join('');
 }
