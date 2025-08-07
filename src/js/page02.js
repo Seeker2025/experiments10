@@ -1,4 +1,5 @@
 console.log('exp 10 page 02');
+////// Gallery, SimpleLightbox, Axios
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 

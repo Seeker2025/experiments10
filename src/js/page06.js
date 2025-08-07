@@ -1,4 +1,5 @@
 console.log('page 06');
+////// row 87; not working { current: {temp_c, condition: { text, icon}}, location: {country, name}}
 
 const searchForm = document.querySelector(".js-search");
 const addCountry = document.querySelector(".js-add");
@@ -26,17 +27,20 @@ function handlerForm(evt){
     // console.log(data.getAll('country'));
     const arr = data.getAll('country').filter(item => item).map(item => item.trim());
     //  console.log(arr);
-     getCountries(arr).then(async resp => {
+     getCountries(arr)
+        .then(async resp => {
         // console.log(resp);
         const capitals = resp.map(({capital}) => capital[0]);
         console.log(capitals);
         const weatherService = await getWeather(capitals);
         
         list.innerHTML = createMarkup(weatherService);
+       
 
         console.log(weatherService);
      })
-     .catch(e => console.log(e));
+     .catch(e => console.log(e))
+     .finally(()=>  searchForm.reset())
 }
 async function getCountries(arr){
     const resp = arr.map(async item => {
@@ -48,7 +52,7 @@ async function getCountries(arr){
     })
     const data = await Promise.allSettled(resp);
     const countryObj = data.filter(({status})=> status === 'fulfilled').map(({value})=> value[0]);
-    console.log(countryObj);
+    // console.log(countryObj);
 
     return countryObj;
 }
@@ -80,15 +84,15 @@ async function getWeather(arr){
 }
 
 function createMarkup(arr){
-return arr.map(() => `
-          <li>
+return arr.map(({temp_c, condition: { text, icon}}) => `
+          <li class="">
               <div>
                   <h2>{country}</h2>
                   <h3>{name}</h3>
               </div>
-              <img src="{icon}" alt="{text}">
-                <p>{text}</p>
-                <p>{text}</p>
+              <img src="${icon}" alt="">
+                <p>${text}</p>
+                <p>${temp_c}</p>
           </li>
     `).join('');
 }
