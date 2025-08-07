@@ -1,4 +1,4 @@
-import"./assets/styles-BnGOUoDK.js";console.log("page 05");function a(t){const o={method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify(t)};return fetch("https://jsonplaceholder.typicode.com/posts",o).then(e=>{if(!e.ok)throw new Error(e.statusText);return e.json()})}const d=document.querySelector(".js-add"),i=document.querySelector(".js-posts"),s=document.querySelector(".js-form"),r=document.querySelector(".js-error");d.addEventListener("click",l);function l(){s.innerHTML=`
+import"./assets/styles-DF3wYhPP.js";console.log("page 05");function a(t){const o={method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify(t)};return fetch("https://jsonplaceholder.typicode.com/posts",o).then(e=>{if(!e.ok)throw new Error(e.statusText);return e.json()})}const d=document.querySelector(".js-add"),i=document.querySelector(".js-posts"),s=document.querySelector(".js-form"),r=document.querySelector(".js-error");d.addEventListener("click",l);function l(){s.innerHTML=`
         <form action="submit" class="js-form-add form-add">
           <input type="text" name="title">
           <textarea name="body" cols="30" rows="10"></textarea>
