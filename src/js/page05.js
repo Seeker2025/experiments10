@@ -63,8 +63,8 @@ function handlerAddPost(){
 
 function handlerFormSubmit(evt){
     evt.preventDefault();
-    // console.log(evt.currentTarget);
-    // console.dir(evt.currentTarget.elements);
+    console.log(evt.currentTarget);
+    console.dir(evt.currentTarget.elements);
 
     const {title, body} = evt.currentTarget.elements;
     // console.log(title.value);
@@ -73,9 +73,17 @@ function handlerFormSubmit(evt){
       title: title.value,
       body: body.value,
      };
+    //  console.log(data.title);
+    //  console.log(data.body);
+                                      if(!(data.title&&data.body)){
+                                        console.log('fail');
+                                        alert('Введіть якийсь текст!')
+                                        evt.currentTarget.innerHTML = null;
+                                        return;
+                                      }
      addPostService(data)
     .then(obj=>{
-      console.log(obj);
+      // console.log(obj);
       listPosts.insertAdjacentHTML('beforeend', createPostMarkup(obj));
   }).catch(()=>{
     errMessage.innerHTML = 'Не можливо додати пост';
