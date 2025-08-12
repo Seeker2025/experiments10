@@ -51,6 +51,7 @@ async function getCountries(arr){
             return await resp.json();
     })
     const data = await Promise.allSettled(resp);
+    console.log(data);
     const countryObj = data.filter(({status})=> status === 'fulfilled').map(({value})=> value[0]);
     // console.log(countryObj);
 

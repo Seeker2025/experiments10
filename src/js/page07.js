@@ -1,4 +1,5 @@
 console.log('page 07');
+//////await fetch
 
 // console.log(typeof('a'));       /////string
 // console.log(typeof(2));         //////number
