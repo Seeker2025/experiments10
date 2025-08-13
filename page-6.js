@@ -1,12 +1,12 @@
-import"./assets/styles-DF3wYhPP.js";console.log("page 06");const i=document.querySelector(".js-search"),u=document.querySelector(".js-add"),m=document.querySelector(".js-list"),d=document.querySelector(".js-form-container");u.addEventListener("click",p);function p(){d.insertAdjacentHTML("beforeend",'<input type="text" name="country">')}i.addEventListener("submit",f);function f(e){e.preventDefault();const r=new FormData(e.currentTarget).getAll("country").filter(t=>t).map(t=>t.trim());h(r).then(async t=>{const n=t.map(({capital:o})=>o[0]);console.log(n);const c=await y(n);m.innerHTML=w(c),console.log(c)}).catch(t=>console.log(t)).finally(()=>i.reset())}async function h(e){const a=e.map(async n=>{const c=await fetch(`https://restcountries.com/v3.1/name/${n}`);if(!c.ok)throw new Error;return await c.json()}),r=await Promise.allSettled(a);return console.log(r),r.filter(({status:n})=>n==="fulfilled").map(({value:n})=>n[0])}async function y(e){const a="https://api.weatherapi.com/v1",r="65fc8710104c48e595e140016252406",t=e.map(async o=>{const l=new URLSearchParams({key:r,q:o,lang:"uk"}),s=await fetch(`${a}/current.json?${l}`);if(!s.ok)throw new Error(s.statusText);return s.json()});return(await Promise.allSettled(t)).filter(({status:o})=>o==="fulfilled").map(({value:o})=>o.current)}function w(e){return e.map(({temp_c:a,condition:{text:r,icon:t}})=>`
+import"./assets/styles-DF3wYhPP.js";console.log("page 06");const i=document.querySelector(".js-search"),m=document.querySelector(".js-add"),p=document.querySelector(".js-list"),l=document.querySelector(".js-form-container"),u='<input type="text" name="country">';m.addEventListener("click",f);function f(){l.insertAdjacentHTML("beforeend",u)}i.addEventListener("submit",h);function h(n){n.preventDefault();const r=new FormData(n.currentTarget).getAll("country").filter(t=>t).map(t=>t.trim());y(r).then(async t=>{const e=t.map(({capital:a})=>a[0]);console.log(e);const o=await w(e);p.innerHTML=j(o)}).catch(t=>console.log(t)).finally(()=>{l.innerHTML=u,i.reset()})}async function y(n){const c=n.map(async e=>{const o=await fetch(`https://restcountries.com/v3.1/name/${e}`);if(!o.ok)throw new Error;return await o.json()}),r=await Promise.allSettled(c);return console.log(r),r.filter(({status:e})=>e==="fulfilled").map(({value:e})=>e[0])}async function w(n){const c="https://api.weatherapi.com/v1",r="65fc8710104c48e595e140016252406",t=n.map(async a=>{const d=new URLSearchParams({key:r,q:a,lang:"uk"}),s=await fetch(`${c}/current.json?${d}`);if(!s.ok)throw new Error(s.statusText);return s.json()});return(await Promise.allSettled(t)).filter(({status:a})=>a==="fulfilled").map(({value:a})=>a)}function j(n){return n.map(({current:{temp_c:c,condition:{text:r,icon:t}},location:{country:e,name:o}})=>`
           <li class="">
               <div>
-                  <h2>{country}</h2>
-                  <h3>{name}</h3>
+                  <h2>${e}</h2>
+                  <h3>${o}</h3>
               </div>
               <img src="${t}" alt="">
                 <p>${r}</p>
-                <p>${a}</p>
+                <p>${c}</p>
           </li>
     `).join("")}
 //# sourceMappingURL=page-6.js.map
