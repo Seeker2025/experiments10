@@ -5,6 +5,7 @@ const searchForm = document.querySelector(".js-search");
 const addCountry = document.querySelector(".js-add");
 const list = document.querySelector(".js-list");
 const formContainer = document.querySelector(".js-form-container");
+const markup = '<input type="text" name="country">';
 // console.log(searchForm);
 // console.log(addCountry);
 // console.log(list);
@@ -13,7 +14,6 @@ const formContainer = document.querySelector(".js-form-container");
 addCountry.addEventListener('click', handlerAddInput);
 
 function handlerAddInput(){
-    const markup = '<input type="text" name="country">';
     formContainer.insertAdjacentHTML('beforeend', markup);
 
 }
@@ -33,14 +33,14 @@ function handlerForm(evt){
         const capitals = resp.map(({capital}) => capital[0]);
         console.log(capitals);
         const weatherService = await getWeather(capitals);
-        
         list.innerHTML = createMarkup(weatherService);
-       
-
-        console.log(weatherService);
+        // console.log(weatherService);
      })
      .catch(e => console.log(e))
-     .finally(()=>  searchForm.reset())
+     .finally(()=>{
+        formContainer.innerHTML = markup;
+        searchForm.reset();
+     })
 }
 async function getCountries(arr){
     const resp = arr.map(async item => {
@@ -79,17 +79,17 @@ async function getWeather(arr){
     })
     
     const data = await Promise.allSettled(resps);
-    const objs = data.filter(({status})=> status === 'fulfilled').map(({value})=> value.current);
+    const objs = data.filter(({status})=> status === 'fulfilled').map(({value})=> value);
     // console.log(objs);
     return objs;
 }
 
 function createMarkup(arr){
-return arr.map(({temp_c, condition: { text, icon}}) => `
+return arr.map(({current: {temp_c, condition: { text, icon}}, location: {country, name}}) => `
           <li class="">
               <div>
-                  <h2>{country}</h2>
-                  <h3>{name}</h3>
+                  <h2>${country}</h2>
+                  <h3>${name}</h3>
               </div>
               <img src="${icon}" alt="">
                 <p>${text}</p>

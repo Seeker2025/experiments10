@@ -6,14 +6,14 @@ const searchForm = toFun('.js-search');
 const addCountry = toFun('.js-add');
 const list = toFun('.js-list');
 const formContainer = toFun('.js-form-container');
+const markup = '<input type="text" name="country">';
 // console.log(searchForm);
 // console.log(addCountry);
 // console.log(list);
 // console.log(formContainer);
 
 function handlerAddInput(){
-    const markup = '<input type="text" name="country">';
-    formContainer.insertAdjacentHTML('beforeend', markup);
+   formContainer.insertAdjacentHTML('beforeend', markup);
 }
 
 addCountry.addEventListener('click', handlerAddInput);
@@ -34,11 +34,15 @@ function handlerForm(evt){
         const weatherService = await getWeather(capitals);
         console.log(weatherService);
         // getWeather(capitals);
+        list.innerHTML = createMarkup(weatherService);
     })
     .catch(e => {
         console.log(e);
     })
-
+    .finally(() => {
+        formContainer.innerHTML = markup;
+        searchForm.reset()
+    })
 }
 
 async function getCounries(arr){
@@ -86,13 +90,13 @@ async function getWeather(arr){
 }
 
 function createMarkup(arr){
-return arr.map(({temp_c, condition: { text, icon}}) => `
+return arr.map(({current: {temp_c, condition: { text, icon}}, location: {country, name}}) => `
           <li class="">
               <div>
-                  <h2>{country}</h2>
-                  <h3>{name}</h3>
+                  <h2>${country}</h2>
+                  <h3>${name}</h3>
               </div>
-              <img src="${icon}" alt="">
+              <img src="${icon}" alt="${text}">
                 <p>${text}</p>
                 <p>${temp_c}</p>
           </li>
