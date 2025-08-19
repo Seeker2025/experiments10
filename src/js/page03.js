@@ -25,7 +25,7 @@ async function aMakeSmoothie(){
             console.log('mis');
         }
 }      
-aMakeSmoothie(); 
+// aMakeSmoothie(); 
 
 // console.log(getFruit('apple'));
 
@@ -48,3 +48,27 @@ aMakeSmoothie();
 //     .catch(reject => console.log('Помилка з виконаного проміса:', reject))
 // // .finally(()=> console.log('Проміс завершено!'))
 
+
+// Оператор нулевого слияния (??)
+const obj = {
+    a: null,
+    b: 2,
+    d: 0,
+}
+
+console.log(obj.a ?? obj.b); // 2
+console.log(obj.c ?? obj.b); // 2
+console.log(obj.d ?? obj.b); // 0
+console.log(Boolean(obj.d ?? obj.b)); // false
+
+//////Оператор опциональной последовательности
+const objOb = {
+    a: {
+        more: {
+            fruit: 'apple',
+        },
+    },
+}
+
+console.log(objOb.a.more.fruit);        //apple
+console.log(objOb?.a?.more?.fruit);     //apple

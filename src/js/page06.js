@@ -1,5 +1,5 @@
 console.log('page 06');
-////// row 87; not working { current: {temp_c, condition: { text, icon}}, location: {country, name}}
+////// FSOn 77 19:30 Модуль 11 Урок 2 Фінальний Артем Рисіч 26.04.2023
 
 const searchForm = document.querySelector(".js-search");
 const addCountry = document.querySelector(".js-add");
