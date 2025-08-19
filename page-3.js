@@ -1,2 +1,2 @@
-import"./assets/styles-DF3wYhPP.js";console.log("page 03");function t(r){const e={strawBerry:"strawBerry01",kiwiBerry:"kiwiBerry02",appleBerry:"appleBerry03"};return new Promise((o,a)=>setTimeout(()=>{o(e[r])},1e3))}async function i(){try{const r=await t("kiwiBerry");console.log(r)}catch{console.log("mis")}}i();
+import"./assets/styles-DF3wYhPP.js";console.log("page 03");const o={b:2,d:0};console.log(o.b);console.log(o.c??o.b);console.log(o.d);console.log(!!o.d);const l={a:{more:{fruit:"apple"}}};console.log(l.a.more.fruit);console.log(l?.a?.more?.fruit);
 //# sourceMappingURL=page-3.js.map
