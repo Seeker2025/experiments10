@@ -1,0 +1,2 @@
+import"./assets/styles-C7ByQbQC.js";console.log("page 10");const n=document.querySelector(".js-tags");console.log(n);n.addEventListener("click",o);function o(t){if(console.log(t.target.nodeName),t.target.nodeName!=="BUTTON")return;const e=document.querySelector(".tags__btn--active");e&&e.classList.remove("tags__btn--active"),t.target.classList.add("tags__btn--active")}
+//# sourceMappingURL=page-10.js.map
