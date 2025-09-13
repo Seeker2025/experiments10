@@ -1,0 +1,50 @@
+body.show-modal .backdrop{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+}
+
+body.shadow-modal .modal{
+    transform: scale(1);
+}
+
+.backdrop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 999;
+
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms easy-in-out, visibility 200ms ease-in-out;
+}
+
+.modal{
+    padding: 24px;
+    border-radius: 4px;
+    max-height: 640px;
+    width: 70%;
+    min-height: 290px;
+    background-color: #fff;
+    box-shadow: 0px 1px 3px 0px (rgba(0, 0, 0 , 0.2));
+
+    transform: scale(1.1);
+    transition: transform 200ms easy-in-out;
+}
+
+button{
+    padding: 7px 0;
+    width: 160px;
+    background-color: rgb(9, 112, 248);
+    color: #fff;
+    font-size: 1em;
+    border-radius: 4px;
+}
+
