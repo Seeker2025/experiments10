@@ -1,4 +1,5 @@
 console.log('page 12');
+//////addEventListener
 
 const refs ={
     parent: document.querySelector('#parent'),
