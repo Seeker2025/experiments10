@@ -1,4 +1,4 @@
-import"./assets/styles-fs3Ovksm.js";console.log("page 09");const c=document.querySelector(".js-add"),a=document.querySelector(".js-posts"),n=document.querySelector(".js-form"),s=document.querySelector(".js-error");console.log(c);console.log(a);console.log(n);c.addEventListener("click",d);function d(){n.innerHTML=`
+import"./assets/styles-CWsNh1zE.js";console.log("page 09");const c=document.querySelector(".js-add"),a=document.querySelector(".js-posts"),n=document.querySelector(".js-form"),s=document.querySelector(".js-error");console.log(c);console.log(a);console.log(n);c.addEventListener("click",d);function d(){n.innerHTML=`
         <form action="submit" class="js-form-add">
             <input type="text" name="title">
             <textarea name="body" cols="30" rows="10"></textarea>

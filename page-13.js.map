@@ -1,0 +1,1 @@
+{"version":3,"file":"page-13.js","sources":["../src/js/page13.js"],"sourcesContent":["console.log('page 13');\n\n//////Boolean\nconsole.log(Boolean(1 === 2));"],"names":[],"mappings":"oCAAA,QAAQ,IAAI,SAAS,EAGrB,QAAQ,IAAY,EAAQ"}
