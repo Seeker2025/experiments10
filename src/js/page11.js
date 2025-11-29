@@ -21,10 +21,10 @@ function onOpenModal(){
     document.body.classList.add('show-modal');
 }
 
-function onCloseModal(evt){
+function onCloseModal(event){
     //////we remove listener from windows when close modal
     window.removeEventListener('keydown', onEscKeyPress);
-    console.log(evt.target);
+    // console.log(event.target);
     document.body.classList.remove('show-modal');
 }
 
@@ -36,6 +36,7 @@ function onBackdropClick(event){
 
     if(event.currentTarget === event.target){
         onCloseModal();
+        console.log('Wow!');
     }
 }
 
